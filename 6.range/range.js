@@ -9,7 +9,9 @@ function meleeRangedGrouping (str) {
       arr[1].push(split[i].split('-')[0]);
     }
   }
-
+  if (!str) {
+    return [];
+  }
   return arr;
 }
 
