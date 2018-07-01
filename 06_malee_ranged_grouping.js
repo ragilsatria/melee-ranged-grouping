@@ -1,25 +1,25 @@
 function meleeRangedGrouping (str) {
-  if (str.length == 0) {
-    return [];
-  } 
+  var potongKoma = str.split(',');   
+  var jagoan = [];
 
-  var hero = str.split(',');
+  for(var i = 0; i < potongKoma.length; i++) {
+    jagoan.push(potongKoma[i].split('-'));
+  }
 
-  var ranged = [];
-  var melee = [];
+  var r = [];
+  var m = [];
+  var hero = []
 
-  for (var i = 0; i < hero.length; i++) {
-    // lakukan split untuk memisah nama dengan jenis hero
-    // nama berada pada indeks 0 dan jenis hero di indeks 1
-    var pisah = hero[i].split('-')
-    if (pisah[1] === 'Ranged'){
-      ranged.push(pisah[0])
+  for (var j = 0; j < jagoan.length; j++) {
+    if(jagoan[j][1] == 'Ranged') {
+      r.push(jagoan[j][0]);
     } else {
-      melee.push(pisah[0])
+      m.push(jagoan[j][0]);
     }
   }
-  return [ranged, melee];
-
+  hero.push(r,m);
+  
+  return hero;
 }
 
 // TEST CASE
