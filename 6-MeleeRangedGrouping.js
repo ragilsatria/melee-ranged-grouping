@@ -3,61 +3,40 @@
 // Melee Ranged Grouping //
 
 function meleeRangedGrouping (str) {
-    var hasil = [];
-    
     //your code here
-    var arr = str.split(',');
-    // [ 'Razor-Ranged',
-    //   'Invoker-Ranged',
-    //   'Meepo-Melee',
-    //   'Axe-Melee',
-    //   'Sniper-Ranged' ]
-
-    var arr1 = []
-
-    for (var i = 0; i < arr.length; i++) {
-        arr1.push(arr[i].split("-"))
+    if(str.length === 0){
+        var result = [];
+        return result;
     }
-    // [ [ 'Razor', 'Ranged' ],
-    // [ 'Invoker', 'Ranged' ],
-    // [ 'Meepo', 'Melee' ],
-    // [ 'Axe', 'Melee' ],
-    // [ 'Sniper', 'Ranged' ] ]
-
-    var kelas = []
-    kelas.push(arr1[0][1])
     
-    for (var i = 1; i < arr1.length; i++) {
-        var trigger = true
-        for (var j = 0; j < kelas.length; j++) {
-            if (kelas[j] === arr1[i][1]) {
-                trigger = false
-            }
-        }
-        if (trigger) {
-            kelas.push(arr1[i][1])
-        }
-    }
-    // [ 'Ranged', 'Melee' ]
+    var hasil = [[], []];
+    var arr = str.split(',');
+    
+    //console.log(arr.length)
+    
 
-    for (var i = 0; i < kelas.length; i++ ) {
-        hasil.push([])
-        for (var j = 0; j < arr1.length; j++) {
-            if (arr1[j][1] === kelas[i]) {
-                hasil[hasil.length-1].push(arr1[j][0])
+    //console.log(arr)
+    for(var i = 0; i < arr.length; i++){
+        for(var j = 0; j < arr[i].length; j++){
+            if(arr[i][j] === '-' && arr[i][j+1] === 'R'){
+               hasil[0].push(arr[i].substring(0, j))
+            } else if(arr[i][j] === '-' && arr[i][j+1] === 'M'){
+                hasil[1].push(arr[i].substring(0, j))
             }
         }
     }
-    // [ [ 'Razor', 'Invoker', 'Sniper' ], [ 'Meepo', 'Axe' ] ]
+
+    
+
     return hasil;
   }
   
   // TEST CASE
   
-  console.log(meleeRangedGrouping('Razor-Ranged,Invoker-Ranged,Meepo-Melee,Axe-Melee,Sniper-Ranged,Asrul-Kaki,Andri-Kaki'));
+  console.log(meleeRangedGrouping('Razor-Ranged,Invoker-Ranged,Meepo-Melee,Axe-Melee,Sniper-Ranged'));
   // [ ['Razor', 'Invoker', 'Sniper'], ['Meepo', 'Axe'] ]
   
-//   console.log(meleeRangedGrouping('Drow Ranger-Ranged,Chen-Ranged,Dazzle-Ranged,Io-Ranged'));
-//   // [ ['Drow Ranger', 'Chen', 'Dazzle', 'Io'], [] ]
+  console.log(meleeRangedGrouping('Drow Ranger-Ranged,Chen-Ranged,Dazzle-Ranged,Io-Ranged'));
+  // [ ['Drow Ranger', 'Chen', 'Dazzle', 'Io'], [] ]
   
-//   console.log(meleeRangedGrouping('')); // []
+  console.log(meleeRangedGrouping('')); // []
