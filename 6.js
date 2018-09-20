@@ -10,7 +10,7 @@ Output yang diharapkan: [ [ <daftar_hero_dengan_tipe_ranged> ], [ <daftar_hero_d
 Jika input adalah string kosong ('') maka return array kosong
 
 Submit Tugas Disini
-*/
+
 
 function meleeRangedGrouping (str) {
   var results=[];
@@ -35,7 +35,25 @@ var split=str.replace(/,/g,'^')
   }
   return results
 }
+*/
+function meleeRangedGrouping (str) {
+  var results=[];
+  if(!str.length) {return results};
+  results.push([],[]);
+ var pairs=str.split(',');
+ 
+  for (i=0; i<pairs.length; i++) {
+      if(pairs[i].indexOf('Melee') !== -1) {
+          results[1].push(pairs[i].slice(0,pairs[i].indexOf('-')))
+      }
+      else{
+          results[0].push(pairs[i].slice(0,pairs[i].indexOf('-')))
 
+      }
+      
+  }
+  return results
+}
 // TEST CASE	
 console.log(meleeRangedGrouping('Razor-Ranged,Invoker-Ranged,Meepo-Melee,Axe-Melee,Sniper-Ranged'));	
 // [ ['Razor', 'Invoker', 'Sniper'], ['Meepo', 'Axe'] ]	
