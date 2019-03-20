@@ -16,8 +16,8 @@ console.log(meleeRangedGrouping('Razor-Ranged,Invoker-Ranged,Meepo-Melee,Axe-Mel
 console.log(meleeRangedGrouping('Drow Ranger-Ranged,Chen-Ranged,Dazzle-Ranged,Io-Ranged'));
 console.log(meleeRangedGrouping(" "))
 
-if(0){
-    console.log("true")
-}else{
-    console.log("false")
-}
+// if(0){
+//     console.log("true")
+// }else{
+//     console.log("false")
+// }
