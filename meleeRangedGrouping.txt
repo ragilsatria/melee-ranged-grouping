@@ -1,0 +1,35 @@
+function meleeRangedGrouping (str) {
+  var arr = str.split(',')
+  var arrSplit = []
+  var melee = []
+  var ranged = []
+  var hasil = []
+  
+  if (str === '') {
+    return []
+  }
+  
+  for (let i = 0; i < arr.length; i++) {
+    arrSplit.push(arr[i].split('-'))
+
+  }
+   for (let j = 0; j < arrSplit.length; j++) {
+    if (arrSplit[j][1] === 'Melee') {
+      melee.push(arrSplit[j][0])
+    } else if (arrSplit[j][1] === 'Ranged') {
+      ranged.push(arrSplit[j][0])
+    }
+  }
+  hasil.push(ranged, melee)
+  return hasil
+}
+
+// TEST CASE
+
+console.log(meleeRangedGrouping('Razor-Ranged,Invoker-Ranged,Meepo-Melee,Axe-Melee,Sniper-Ranged'));
+// [ ['Razor', 'Invoker', 'Sniper'], ['Meepo', 'Axe'] ]
+
+console.log(meleeRangedGrouping('Drow Ranger-Ranged,Chen-Ranged,Dazzle-Ranged,Io-Ranged'));
+// [ ['Drow Ranger', 'Chen', 'Dazzle', 'Io'], [] ]
+
+console.log(meleeRangedGrouping('')); // []
