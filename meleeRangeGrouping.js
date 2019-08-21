@@ -1,31 +1,43 @@
+function splitStr(str, operator = '') {
+  const result = []
+  let temp = ''
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== operator) {
+      temp += str[i]
+    } else {
+      result.push(temp)
+      temp = ''
+    }
+    if (i === str.length - 1) result.push(temp)
+  }
+  return result
+}
+
 function meleeRangedGrouping(str) {
   if (!str) return []
 
-  let temp = ''
-  const result = []
-  const heroes = []
-  const ranged = []
-  const melee = []
-
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] !== ',') {
-      temp += str[i]
-    } else {
-      heroes.push(temp)
-      temp = []
-    }
-    if (i === str.length - 1) heroes.push(temp)
+  const heroesType = {
+    ranged: 'Ranged' || 'ranged',
+    melee: 'Melee' || 'melee'
   }
 
-  for (let j = 0; j < heroes.length; j++) {
-    for (let k = 0; k < heroes[j].length; k++) {
-      if (heroes[j][k] === '-' && heroes[j][k + 1] === 'R') {
-        const getHeroName = heroes[j].substring(0, k)
-        ranged.push(getHeroName)
-      } else if (heroes[j][k] === '-' && heroes[j][k + 1] === 'M') {
-        const getHeroName = heroes[j].substring(0, k)
-        melee.push(getHeroName)
-      }
+  const result = []
+  const ranged = []
+  const melee = []
+  const arrTwoD = []
+  const splitComma = splitStr(str, ',')
+
+  for (let i = 0; i < splitComma.length; i++) {
+    const splitDash = splitStr(splitComma[i], '-')
+    arrTwoD.push(splitDash)
+  }
+
+  for (let i = 0; i < arrTwoD.length; i++) {
+    if (arrTwoD[i][1] == heroesType.ranged) {
+      ranged.push(arrTwoD[i][0])
+    } else {
+      melee.push(arrTwoD[i][0])
     }
   }
 
@@ -35,7 +47,7 @@ function meleeRangedGrouping(str) {
 
 // TEST CASE
 
-console.log(meleeRangedGrouping('Razor-Ranged,Invoker-Ranged,Meepo-Melee,Axe-Melee,Sniper-Ranged'))
+console.log(meleeRangedGrouping('Razor-ranged,Invoker-Ranged,Meepo-Melee,Axe-Melee,Sniper-Ranged'))
 // [ ['Razor', 'Invoker', 'Sniper'], ['Meepo', 'Axe'] ]
 
 console.log(meleeRangedGrouping('Drow Ranger-Ranged,Chen-Ranged,Dazzle-Ranged,Io-Ranged'))
