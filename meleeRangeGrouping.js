@@ -18,8 +18,8 @@ function meleeRangedGrouping(str) {
   if (!str) return []
 
   const heroesType = {
-    ranged: 'Ranged' || 'ranged',
-    melee: 'Melee' || 'melee'
+    ranged: 'ranged',
+    melee: 'melee'
   }
 
   const result = []
@@ -34,7 +34,7 @@ function meleeRangedGrouping(str) {
   }
 
   for (let i = 0; i < arrTwoD.length; i++) {
-    if (arrTwoD[i][1] == heroesType.ranged) {
+    if (arrTwoD[i][1].toLowerCase() == heroesType.ranged) {
       ranged.push(arrTwoD[i][0])
     } else {
       melee.push(arrTwoD[i][0])
