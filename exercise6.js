@@ -29,7 +29,7 @@ function meleeRangedGrouping (str) {
             tempMelee.push(temp[0]);
         }
     }
-    final.push(tempRanged, tempMelee)
+    final.push(tempRanged, tempMelee);
     return final
   }
   
