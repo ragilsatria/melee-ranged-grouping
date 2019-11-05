@@ -4,13 +4,13 @@ function meleeRangedGrouping(str) {
     return [];
   }
   var arr = str.split(",");
-  //arr;
+
   var nameClass = [];
   for (var i = 0; i < arr.length; i++) {
     var temp = arr[i].split("-");
     nameClass.push(temp);
   }
-  // nameClass;
+
   var result = [[], []];
   for (var i = 0; i < nameClass.length; i++) {
     if (nameClass[i][1] === "Ranged") {
@@ -31,9 +31,9 @@ console.log(
 );
 // [ ['Razor', 'Invoker', 'Sniper'], ['Meepo', 'Axe'] ]
 
-// console.log(
-//   meleeRangedGrouping("Drow Ranger-Ranged,Chen-Ranged,Dazzle-Ranged,Io-Ranged")
-// );
+console.log(
+  meleeRangedGrouping("Drow Ranger-Ranged,Chen-Ranged,Dazzle-Ranged,Io-Ranged")
+);
 // // [ ['Drow Ranger', 'Chen', 'Dazzle', 'Io'], [] ]
 
-// console.log(meleeRangedGrouping("")); // []
+console.log(meleeRangedGrouping("")); // []
