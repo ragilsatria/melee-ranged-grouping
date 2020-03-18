@@ -1,19 +1,22 @@
-function meleeRangedGrouping (str) {
+function meleeRangedGrouping(str) {
     if (str.length <= 0) {
         return [];
     }
-    const heroes = [[],[]];
+    const heroes = [
+        [],
+        []
+    ];
     let hero = '';
     let type = '';
     let heroTypeSwitch = true; // true = hero, false = type;
-    for (let i = 0; i <= str.length; i ++) {
+    for (let i = 0; i <= str.length; i++) {
         if (str[i] == '-') {
             heroTypeSwitch = !heroTypeSwitch;
         } else if (str[i] == ',' || str[i] == undefined) {
             heroTypeSwitch = !heroTypeSwitch;
             if (type == 'Ranged') {
                 heroes[0].push(hero);
-            } else if(type == 'Melee') {
+            } else if (type == 'Melee') {
                 heroes[1].push(hero);
             }
             hero = '';
