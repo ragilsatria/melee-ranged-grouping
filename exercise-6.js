@@ -31,7 +31,6 @@ function meleeRangedGrouping(str) {
     hasil.push(ranged, melee)
 
     return hasil;
-
 }
 
 // TEST CASE
