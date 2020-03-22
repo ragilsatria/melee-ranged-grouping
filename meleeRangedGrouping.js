@@ -1,33 +1,33 @@
 function meleeRangedGrouping (str) {
-    var arr = str.split(',');
-    var i = 0;
-    var arrMelee = [];
-    var arrRanged = [];
-    var arrResult = [];
+    var arr = str.split(',')
+    var i = 0
+    var arrMelee = []
+    var arrRanged = []
+    var arrResult = []
   
     if (str.length === 0) {
-      return arrResult;
+      return arrResult
     }
   
     while (i < arr.length) {
-      var j = 0;
+      var j = 0
       while (j < arr[i].length) {
         if (arr[i][j] !== '-') {
-          j++;
+          j++
         } else {
-          break;
+          break
         }
       }
-      var potong = arr[i].slice(j+1);
+      var potong = arr[i].slice(j+1)
       if (potong === 'Melee') {
-        arrMelee.push(arr[i].slice(0, j));
+        arrMelee.push(arr[i].slice(0, j))
       } else if (potong === 'Ranged') {
-        arrRanged.push(arr[i].slice(0, j));
+        arrRanged.push(arr[i].slice(0, j))
       }
-      i++;
+      i++
     }
-    arrResult.push(arrRanged, arrMelee);
-    return arrResult;
+    arrResult.push(arrRanged, arrMelee)
+    return arrResult
   }
   
   // TEST CASE
