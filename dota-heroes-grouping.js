@@ -2,7 +2,7 @@ function meleeRangedGrouping(str) {
     if (str.length <= 0) {
         return [];
     }
-    const heroes = [
+    let heroes = [
         [],
         []
     ];
